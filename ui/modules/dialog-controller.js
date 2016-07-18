@@ -35,25 +35,25 @@
             'intro': {
                 'key': 'intro',
                 'class': 'intro',
-                'placeholder': 'Loading. Please wait...',
+                'placeholder': 'Cargando. Por favor esperá...',
                 'introText': ''
             },
             'chatting': {
                 'key': 'chatting',
                 'class': 'chatting',
-                'placeholder': 'Start typing...',
+                'placeholder': 'Comenzá a escribir...',
                 'introText': ''
             },
             'preview': {
                 'key': 'preview',
                 'class': 'preview',
-                'placeholder': 'Start typing...',
+                'placeholder': 'Comenzá a escribir...',
                 'introText': ''
             },
             'favorites': {
                 'key': 'favorites',
                 'class': 'favorites',
-                'placeholder': 'Start typing...',
+                'placeholder': 'Comenzá a escribir...',
                 'introText': ''
             }
         };
@@ -237,7 +237,7 @@
                 return init.then(function (response) {
                     placeholderText = response.welcomeMessage;
                     states.intro.introText = placeholderText.replace(/\n\n/g, ' '); //for placeholder attr use spaces
-                    states.intro.placeholder = 'Start typing...';
+                    states.intro.placeholder = 'Comenzá a escribir...';
                     $('#question').removeAttr('disabled');
                     setState(states.intro);
                     $('#question').focus();

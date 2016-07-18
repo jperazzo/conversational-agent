@@ -4,20 +4,23 @@
         <folder label="Main">
             <output id="output_2508575">
                 <prompt selectionType="SEQUENTIAL">
-                    <item>What can I call you?</item>
-                    <item>What's your name?</item>
+                    <item>¿Cuál es tu nombre?</item>
+				<item>¿Cómo te llamás?</item>
+				<item>¿Cómo puedo llamarte?</item>
+                    
                 </prompt>
                 <getUserInput id="getUserInput_2508591">
                     <input isAutoLearnCandidate="true"
                         isRelatedNodeCandidate="true" comment="$ movies&#xa;$ want to see something&#xa;$ planning to go see&#xa;$ planning to go to the&#xa;$ going out to see&#xa;$ planning to see&#xa;$ want to go see&#xa;$ thinking of seeing&#xa;$ thinking we want to see&#xa;$ what do you recommend&#xa;$ can you recommend something&#xa;$ what are your recommendations">
                         <grammar>
-                            <item>Genre, Rating, Recency</item>
+                            <item>Genre, Recency</item>
                             <item>$ (GENRE)={Genre_Preference}</item>
                             <item>$ (CERTIFICATION)={Certification_Preference}</item>
                             <item>$ (RECENCY)={Recency_Preference}</item>
                             <item>$ movies</item>
                         </grammar>
                         <action varName="Genre_Preference" operator="SET_TO">{Genre_Preference.value:main}</action>
+                        <action varName="Certification_Preference" operator="SET_TO">{Certification_Preference.value:main}</action>
                         <action varName="Certification_Preference" operator="SET_TO">{Certification_Preference.value:main}</action>
                         <action varName="Recency_Preference" operator="SET_TO">{Recency_Preference.value:main}</action>
                         <action varName="Topic" operator="SET_TO">movies</action>
@@ -100,9 +103,9 @@
                     </input>
                     <input id="input_2530402">
                         <grammar>
-                            <item>My name is</item>
-                            <item>my name is (DYNAMIC_DATA)={User_Name}</item>
-                            <item>mine is (DYNAMIC_DATA)={User_Name}</item>
+                            <item>Mi nombre es</item>
+                            <item>mi nombre es (DYNAMIC_DATA)={User_Name}</item>
+                            <item>el mio es (DYNAMIC_DATA)={User_Name}</item>
                             <item>(DYNAMIC_DATA)={User_Name} </item>
                             <item>(DYNAMIC_DATA)={User_Name} GiveName</item>
                         </grammar>
@@ -110,7 +113,7 @@
                         <action varName="Defaulted_Previous" operator="SET_TO_NO"/>
                         <output>
                             <prompt>
-                                <item>Hi {User_Name}!</item>
+                                <item>Hola {User_Name}!</item>
                             </prompt>
                             <goto ref="output_2508831"/>
                         </output>
@@ -118,7 +121,7 @@
                 </getUserInput>
                 <output id="output_2508831">
                     <prompt selectionType="RANDOM">
-                        <item>Would you like to find a movie that's now playing or coming soon?</item>
+                        <item>¿Querés encontrar una película que actualmente esté en cartelera o algún estreno por venir?</item>
                     </prompt>
                     <action varName="Defaulted_Previous" operator="SET_TO_NO"/>
                     <action varName="Class2" operator="SET_TO_BLANK"/>
@@ -3094,9 +3097,9 @@ Say &lt;i&gt;got to go&lt;/i&gt; or &lt;i&gt;bye&lt;/i&gt; when you're finished.
                 <folder selectionType="RANDOM" label="OPENING SEQUENCES">
                     <input>
                         <grammar>
-                            <item>Hello</item>
-                            <item>Hello again</item>
-                            <item>hi there</item>
+                            <item>Hola</item>
+                            <item>Hola de nuevo</item>
+                            <item>qué tal?</item>
                         </grammar>
                         <action varName="Defaulted_Previous" operator="SET_TO_NO"/>
                         <action varName="Greeting_Count" operator="INCREMENT_BY">1</action>
@@ -3111,9 +3114,9 @@ Say &lt;i&gt;got to go&lt;/i&gt; or &lt;i&gt;bye&lt;/i&gt; when you're finished.
                         </if>
                         <output>
                             <prompt selectionType="RANDOM">
-                                <item>Hello.</item>
-                                <item>Hi.</item>
-                                <item>Hi there.</item>
+                                <item>Hola.</item>
+                                <item>Cómo va?</item>
+                                <item>Todo bien?</item>
                             </prompt>
                             <output id="output_2459184">
                                 <prompt selectionType="RANDOM">
@@ -4397,14 +4400,14 @@ Say &lt;i&gt;got to go&lt;/i&gt; or &lt;i&gt;bye&lt;/i&gt; when you're finished.
             <value name="Romance" value="Romance">
                 <grammar>
                     <item>romances</item>
-                    <item>romantic</item>
-                    <item>chick flicks</item>
-                    <item>chick flick</item>
+                    <item>romántica</item>
+                    <item>películas románticas</item>
+                    <item>de mujeres</item>
                     <item>sexy</item>
                     <item>steamy</item>
                     <item>take my date</item>
                     <item>take a date</item>
-                    <item>for my date</item>
+                    <item>para mi cita</item>
                 </grammar>
             </value>
             <value name="Science Fiction" value="Science Fiction">
@@ -4412,10 +4415,12 @@ Say &lt;i&gt;got to go&lt;/i&gt; or &lt;i&gt;bye&lt;/i&gt; when you're finished.
                 <grammar>
                     <item>Sci-fi</item>
                     <item>Scifi</item>
-                    <item>space</item>
+				<item>ciencia ficción</item>
+                    <item>espacio</item>
+				<item>monstruos</item>
                     <item>alien</item>
                     <item>aliens</item>
-                    <item>little green men</item>
+                    <item>marcianos</item>
                 </grammar>
             </value>
             <value name="TV Movie" value="TV Movie">
@@ -4428,15 +4433,16 @@ Say &lt;i&gt;got to go&lt;/i&gt; or &lt;i&gt;bye&lt;/i&gt; when you're finished.
             <value name="Thriller" value="Thriller">
                 <grammar>
                     <item>Thrillers</item>
-                    <item>suspense</item>
-                    <item>suspenseful</item>
+                    <item>suspenso</item>
+                    <item>misterio</item>
                 </grammar>
             </value>
             <value name="War" value="War">
                 <concept ref="concept_1852807"/>
                 <grammar>
-                    <item>WWII</item>
-                    <item>WWI</item>
+                    <item>primera guerra mundial</item>
+				<item>segunda guerra mundial</item>
+                    <item>guerra mundial</item>
                 </grammar>
             </value>
             <value name="Western" value="Western">
@@ -4475,42 +4481,42 @@ Say &lt;i&gt;got to go&lt;/i&gt; or &lt;i&gt;bye&lt;/i&gt; when you're finished.
         <entity name="RECENCY" entityType="GENERIC">
             <value name="Upcoming" value="Upcoming">
                 <grammar>
-                    <item>coming soon</item>
-                    <item>coming</item>
-                    <item>soon</item>
-                    <item>another time</item>
-                    <item>another night</item>
-                    <item>another day</item>
-                    <item>later time</item>
-                    <item>upcoming</item>
-                    <item>next month</item>
-                    <item>next week</item>
+                    <item>por estrenarse</item>
+                    <item>estrenándose</item>
+                    <item>pronto</item>
+                    <item>en otro momento</item>
+                    <item>otra noche</item>
+                    <item>otro día</item>
+                    <item>más tarde</item>
+                    <item>por venir</item>
+                    <item>próximo mes</item>
+                    <item>próxima semanas</item>
                 </grammar>
             </value>
             <value name="Current" value="Current">
                 <grammar>
-                    <item>playing</item>
-                    <item>showing</item>
-                    <item>currently</item>
-                    <item>in theaters</item>
-                    <item>in theater</item>
-                    <item>in theatres</item>
-                    <item>in theatre</item>
-                    <item>recent</item>
-                    <item>new</item>
-                    <item>now</item>
-                    <item>today</item>
-                    <item>tonight</item>
-                    <item>yesterday</item>
-                    <item>this afternoon</item>
-                    <item>this morning</item>
-                    <item>this evening</item>
-                    <item>this week</item>
-                    <item>ongoing</item>
-                    <item>latest</item>
-                    <item>now</item>
-                    <item>already at the movies</item>
-                    <item>whatever is on</item>
+                    <item>que estés dando ahora</item>
+                    <item>exhibiendo</item>
+                    <item>actualmente</item>
+                    <item>en cines</item>
+                    <item>en el cine</item>
+                    <item>en los cines</item>
+                    <item>en cine</item>
+                    <item>reciente</item>
+                    <item>nueva</item>
+                    <item>ahora</item>
+                    <item>hoy</item>
+                    <item>esta noche</item>
+                    <item>ayer</item>
+                    <item>esta tarde</item>
+                    <item>esta mañana</item>
+                    <item>esta noche</item>
+                    <item>esta semana</item>
+                    <item>en cartelera</item>
+                    <item>las últimas</item>
+                    <item>ahora</item>
+                    <item>ya estrenada</item>
+                    <item>lo que estén dando</item>
                 </grammar>
             </value>
             <entityRules></entityRules>
@@ -4551,11 +4557,11 @@ Say &lt;i&gt;got to go&lt;/i&gt; or &lt;i&gt;bye&lt;/i&gt; when you're finished.
             </value>
             <value name="by Title" value="by Title">
                 <grammar>
-                    <item>by Titles</item>
-                    <item>by Movie Name</item>
-                    <item>by Movie Names</item>
-                    <item>the movie called</item>
-                    <item>that movie called</item>
+                    <item>por Títulos</item>
+                    <item>por nombre de película</item>
+                    <item>por nombres de películas</item>
+                    <item>la película que se llama</item>
+                    <item>esa película que se llama</item>
                 </grammar>
             </value>
             <entityRules></entityRules>
@@ -4563,54 +4569,52 @@ Say &lt;i&gt;got to go&lt;/i&gt; or &lt;i&gt;bye&lt;/i&gt; when you're finished.
         <entity name="UNSUPPORTED_GENRES" entityType="GENERIC">
             <value name="Musical" value="Musical">
                 <grammar>
-                    <item>musicals</item>
+                    <item>musicales</item>
                     <item>broadway</item>
                 </grammar>
             </value>
             <value name="Romantic Comedy" value="Romantic Comedy">
                 <concept ref="concept_1852702"/>
                 <grammar>
-                    <item>romantic comedies</item>
-                    <item>rom com</item>
-                    <item>rom-com</item>
-                    <item>romcom</item>
-                    <item>rom coms</item>
-                    <item>romcoms</item>
+                    <item>comedias románticas</item>
                 </grammar>
             </value>
             <value name="Sports" value="Sports">
                 <grammar>
-                    <item>sport</item>
+                    <item>deporte</item>
                     <item>baseball</item>
-                    <item>football</item>
-                    <item>soccer</item>
-                    <item>tennis</item>
-                    <item>olymic</item>
-                    <item>olymics</item>
+                    <item>fútbol</item>
+                    <item>fútbol americano</item>
+                    <item>tenis</item>
+                    <item>olímpico</item>
+                    <item>olimpíadas</item>
                     <item>cricket</item>
                     <item>basketball</item>
+				<item>basket</item>
+				<item>basquetball</item>
                     <item>hockey</item>
+				<item>rugby</item>
                 </grammar>
             </value>
             <value name="Disaster" value="Disaster">
                 <grammar>
-                    <item>disasters</item>
-                    <item>earthquake</item>
-                    <item>earthquakes</item>
-                    <item>plague</item>
-                    <item>plagues</item>
-                    <item>apocalypse</item>
-                    <item>end of the world</item>
+                    <item>desastres naturales</item>
+                    <item>terremotos</item>
+                    <item>terremoto</item>
+                    <item>plaga</item>
+                    <item>plagas</item>
+                    <item>apocalipsis</item>
+                    <item>fin del mundo</item>
                 </grammar>
             </value>
             <value name="Adult" value="Adult">
                 <concept ref="concept_2510154"/>
                 <grammar>
-                    <item>porn</item>
-                    <item>pornography</item>
                     <item>porno</item>
-                    <item>sex</item>
-                    <item>skin flick</item>
+                    <item>pornografía</item>
+                    <item>porno</item>
+                    <item>sexo</item>
+                    <item>mucha piel</item>
                 </grammar>
             </value>
             <value name="Bollywood" value="Bollywood"/>
@@ -4918,11 +4922,11 @@ border-color:#000000;
     </variables>
     <settings>
         <setting name="AUTOLEARN" type="USER">false</setting>
-        <setting name="LANGUAGE" type="USER">en-US</setting>
+        <setting name="LANGUAGE" type="USER">es-AR</setting>
         <setting name="RESPONSETIME" type="USER">-2</setting>
         <setting name="MAXAUTOLEARNITEMS" type="USER">2</setting>
         <setting name="NUMAUTOSETRELATED" type="USER">0</setting>
-        <setting name="TIMEZONEID" type="USER">America/Tijuana</setting>
+        <setting name="TIMEZONEID" type="USER">America/Argentina/Buenos_Aires</setting>
         <setting name="AUTOSETRELATEDNODEID" type="USER">2158864</setting>
         <setting name="INPUTMASKTYPE" type="USER">0</setting>
         <setting name="CONCEPTMATCHING" type="USER">1</setting>
